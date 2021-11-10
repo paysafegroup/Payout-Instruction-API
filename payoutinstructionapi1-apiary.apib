@@ -23,9 +23,10 @@ Payout a merchant a specified amount
 
 `https://api.paysafe.com/accountmanagement/v1/accounts/{account_id}/payouts`
 
-## Flows
+## Payout Instrcution Flow
 
-
+**Payout Instrcution Flow**
+![](https://raw.githubusercontent.com/SwathiBirlangi/Paysafegroup-images/main/Payment_Flow.png)
 
 
 ## Examples
@@ -186,28 +187,62 @@ Payout a merchant a specified amount
 | 5031    | 409 | The credentials provided with the request do not have permission to access the data requested.|Payout with merchantRefNum <b>[X]</b> is a duplicate.|
 | 5068    | 400 | Either you submitted a request that is missing a mandatory field or the value of a field does not match the format expected.|Field Errors: <br>1. Amount <br>*Required Field*<br>*size must be between 1 and 256 where leading and trailing spaces are omitted*<br><br>2. merchantRefNum<br>*Required Field*<br>*must be greater than or equal to 1* (must be less than or equal to 99999999999)|
 
+# Data Structures
+
+## `id`
+
++ `id`: `25f6dadf-176a-415f-95c9-6ff39ff697ba` (string) - This is the ID returned in the response. This ID can be used for future associated requests, Example - Payouts.
+
+    _Read Only_, _length<=36_
+    
+## `amount`
+    
++ `amount`: `1299` (number, required) - This is the amount that the Merchant has been asked to pay.
+
+    _max=99999999999_
+    
+## `merchantRefNum`
+    
++ `merchantRefNum`: `1234` (string, required) - This is the merchant reference number created by the merchant and submitted as part of the request.
+
+    _length<=255_
+    
+## `status`
+    
++ `status`:`COMPLETED` (enum) - Status of the transaction performed.
+
+    _Read Only_
+    
+    + Members
+        + `COMPLETED`
+        + `FAILED`
+
+## `balance`
++ balance:`135111` (string) - Upon successful transaction, it shows the current balance of the Partner account.        
+
+## `dupidCheck`       
++ `dupidCheck`:`false` (boolean, optional) - This validates that this request is not a duplicate. A request is considered a duplicate if the *merchantRefNum* has already been used in a previous request within the past 90 days.
+
+    + Default: true  
 
 ## Payout Instructions [/accounts/1000316/payouts]
 
-Platforms can transfer balances or initiate merchant payouts for specified amounts.
++ Platforms can transfer balances or initiate merchant payouts for specified amounts.
++ Sometimes a payout is split into many merchant accounts, each of which is set up to handle the payout in the way it instructed.
++ Payouts are updated on daily basis.
 
 ### Create a Payout [POST]
 
 + Parameters
     + account_id: `1000316` (string, required) - This is the merchant account number.
-
-    + id:`123456789` (string) - This is the ID returned in the response.
-        _length<=36_ 
-    + amount:`123456789` (Integer, required) - This is the ID returned in the response.
-        _length=99999999999_ 
-    + merchantRefNum:`123456789` (string, required) - This is the ID returned in the response.
-    _Min = 1, Max = 255, not null_ 
-    + status:`123456789` (Enumeration) - This is the ID returned in the response.
-    _Values = [COMPLETED, FAILED]_
-    + balance:`123456789` (Integer) - This is the ID returned in the response.
-    _length=99999999999_ 
-    + dupCheck:`123456789` (Boolean) - This is the ID returned in the response.
-    _default value = true, in request only_ 
+    
++ Attributes
+    + Include id
+    + Include amount
+    + Include merchantRefNum
+    + Include status
+    + Include balance
+    + Include dupidCheck
     
 + Request (application/json)
 
