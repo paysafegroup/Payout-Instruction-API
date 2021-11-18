@@ -3,10 +3,11 @@ HOST: https://api.paysafe.com/accountmanagement/v1
 
 # Payout Instruction API
 
-The purpose of the Payout Instruction API is to give partners the ability to control and regulate payouts to their merchants. 
+The purpose of the Payout Instruction API is to give partners the ability to control and regulate payouts to their merchants. It is the information provided by our partner to the payee instructing to make a bill payment for the Service.  
 
-Today, Merchants with longer business hours are unable to balance their business day receipts against Paysafe's payout amounts. This issue is due to Paysafe's settlement cutoff not being aligned with the merchant’s business day cutoff (for example, our cutoff is midnight ET, whereas a restaurant's end of business day could be 3 am ET).
-Since most Independent Software Vendors (ISVs) app knows the business hours of the merchant and the amount the merchant should be paid, Paysafe has developed and released new APIs to allow ISVs to determine the merchant payout amount.
+Today, Merchants with longer business hours are unable to balance their business day receipts against Paysafe's payout amounts. This issue is due to Paysafe's settlement cutoff not being aligned with the merchant’s business day cutoff (for example, our cutoff is till midnight ET, whereas a restaurant's end of business day could be 3 am ET).
+
+In order to overcome the current situation, Paysafe has developed and released new APIs to allow ISVs to determine the merchant payout amount. Since most Independent Software Vendors (ISVs) know the merchant's business hours, our partners can directly integrate Paysafe API with ISVs to instruct the Payee on the amount to be paid for the service.
 
 <a name="payoutinstruction" title="Payout Instruction API Overview"></a>
 
