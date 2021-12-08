@@ -3,11 +3,13 @@ HOST: https://api.paysafe.com/accountmanagement/v1
 
 # Payout Instruction API
 
-The purpose of the Payout Instruction API is to give partners the ability to control and regulate payouts to their merchants. It is the information provided by our partner to the payee instructing to make a bill payment for the Service.  
+The Payout Instruction API provides our Independent Software Vendors (ISVs) / Partners with the ability to control the frequency of payouts to its merchants and define the payout amounts. Payout instructions submitted through the API are processed daily and paid out to merchants according to their funding schedule. The execution of these payout instructions is dependent on sufficient funds being available in the Merchant Account balance. In addition, the API response (whether successful or failed) displays the remaining Merchant Account balance for easy reconciliation for ISVs / Partners.
 
-Today, Merchants with longer business hours are unable to balance their business day receipts against Paysafe's payout amounts. This issue is due to Paysafe's settlement cutoff not being aligned with the merchant’s business day cutoff (for example, our cutoff is till midnight ET, whereas a restaurant's end of business day could be 3 am ET).
+The benefits of this product is to allow our ISVs / Partners to circumvent any reconciliation challenges that their merchants may be presented with due to factors such as time zone differences, late business hours (e.g., bars/restaurants), irregular service policies / sales processes, etc. To take advantage of the benefits provided by the Payout Instruction API, ISVs / Partners are required to be:
 
-In order to overcome the current situation, Paysafe has developed and released new APIs to allow ISVs to determine the merchant payout amount. Since most Independent Software Vendors (ISVs) know the merchant's business hours, our partners can directly integrate Paysafe API with ISVs to instruct the Payee on the amount to be paid for the service.
++ Operating through a Managed PayFac model
++ Using Fee Redirect services
++ Able to provide direct reporting/reconciliation to their merchants
 
 <a name="payoutinstruction" title="Payout Instruction API Overview"></a>
 
